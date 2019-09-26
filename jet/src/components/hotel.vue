@@ -1,5 +1,17 @@
 <template>
+<div>
+  酒店
+ 
   <div>
-    酒店
+      <tabbar></tabbar>
+  </div>
   </div>
 </template>
+<script>
+import tabbar from "./tabbar.vue";
+export default {
+  components: {
+    tabbar
+  },
+}
+</script>
