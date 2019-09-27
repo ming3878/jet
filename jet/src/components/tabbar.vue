@@ -50,7 +50,7 @@ export default {
     },               
          data() {
             return {
-              active:0,
+              active2:0,//???
                 home_icon: {
                     normal:require('./../img/飞机hui.png'),
                     active:require('./../img/飞机.png')

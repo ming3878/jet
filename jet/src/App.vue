@@ -43,6 +43,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family:"Microsoft Yahei";
   }
 </style>
 
