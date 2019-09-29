@@ -33,19 +33,19 @@
                 </van-button>
               </div>
               <div id="riqi">
-                <van-button class="date">
+                <van-button class="date" @click="dshow">
                   <div>
                     <img src="./../img/日历.png" alt class="dingwei" />2019年10月16日，星期三
                   </div>
                 </van-button>
                 <van-divider :style="{ borderColor: '#ddd', padding:'0 0 0 30px',margin:'0' }"></van-divider>
-                <van-button class="date">
+                <van-button class="date" @click="dshow">
                   <div>
                     <img src="./../img/加.png" alt class="dingwei" />添加返程航班
                   </div>
                 </van-button>
               </div>
-              <div id="renshu">
+              <div id="renshu" @click="rshow">
                 <van-button class="location">
                   <div class="zhong">
                     <img src="./../img/人数.png" alt class="dingwei" />1位乘客，经济舱
@@ -64,11 +64,32 @@
         </van-tab>
       </van-tabs>
     </div>
-    <van-popup v-model="show" round position="bottom" :style="{ height: '90%' }">
-
+    <van-popup v-model="show"  position="bottom" :style="{ height: '90%' }">
       <form action="/">
         <van-search v-model="sou_value" placeholder="城市、国家或机场" show-action class="search" />
       </form>
+    </van-popup>
+        <van-popup v-model="dateshow"  position="bottom" :style="{ height: '50%' }">
+               日历
+    </van-popup>
+    <van-popup v-model="renshow" position="bottom" :style="{ height: '60%' }">
+          <div>
+           <p>舱位和乘客</p> 
+                <van-divider :style="{ borderColor: '#ddd',margin:'0' }"></van-divider>
+          </div>
+          <div>
+            <van-row>
+  <van-col span="12">
+    <ul>
+      <li>成人</li>
+      <li>12岁以上</li>
+    </ul>
+  </van-col>
+  <van-col span="12">
+    <van-stepper v-model="man_value" />
+  </van-col>
+</van-row>
+          </div>
     </van-popup>
     <div>
       <tabbar></tabbar>
@@ -80,6 +101,10 @@ import tabbar from "./tabbar.vue";
 export default {
   data() {
     return {
+      man_value: 1,
+      renshow:false,
+      dateshow:false,
+      sou_value:"",
       show: false,
       active: 1,
       Arr: [
@@ -104,6 +129,12 @@ export default {
     },
     cshow() {
       this.show = !this.show;
+    },
+    dshow(){
+      this.dateshow=!this.dateshow;
+    },
+    rshow(){
+      this.renshow=!this.renshow;
     }
   }
 };
