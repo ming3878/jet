@@ -72,24 +72,54 @@
         <van-popup v-model="dateshow"  position="bottom" :style="{ height: '50%' }">
                日历
     </van-popup>
-    <van-popup v-model="renshow" position="bottom" :style="{ height: '60%' }">
+    <van-popup v-model="renshow" position="bottom" :style="{  }">
           <div>
-           <p>舱位和乘客</p> 
+           <p class="title">舱位和乘客</p> 
                 <van-divider :style="{ borderColor: '#ddd',margin:'0' }"></van-divider>
           </div>
-          <div>
+          <div class="man">
             <van-row>
   <van-col span="12">
     <ul>
-      <li>成人</li>
-      <li>12岁以上</li>
+      <li class="dazi">成人</li>
+      <li class="xiaozi">12岁以上</li>
     </ul>
   </van-col>
-  <van-col span="12">
+  <van-col span="12" class="jia">
     <van-stepper v-model="man_value" />
   </van-col>
 </van-row>
           </div>
+           <div class="man1">
+            <van-row>
+  <van-col span="12">
+    <ul>
+      <li class="dazi">儿童</li>
+      <li class="xiaozi">2至12岁</li>
+    </ul>
+  </van-col>
+  <van-col span="12" class="jia">
+    <van-stepper v-model="child_value" />
+  </van-col>
+</van-row>
+          </div>
+           <div class="man1">
+            <van-row>
+  <van-col span="12">
+    <ul>
+      <li class="dazi">婴儿</li>
+      <li class="xiaozi">0至2岁</li>
+    </ul>
+  </van-col>
+  <van-col span="12" class="jia">
+    <van-stepper v-model="baby_value" />
+  </van-col>
+</van-row>
+<a-slider :marks="cang_value" :step="null" :defaultValue="0" class="cang" />
+          </div>
+          <div class="wancheng">
+                <van-button class="an">完成</van-button>
+              </div>
     </van-popup>
     <div>
       <tabbar></tabbar>
@@ -101,7 +131,10 @@ import tabbar from "./tabbar.vue";
 export default {
   data() {
     return {
+      cang_value:{0:'经济舱',33:'豪华经济舱',66:'商务舱',100:'头等舱'},
       man_value: 1,
+      child_value:1,
+      baby_value:1,
       renshow:false,
       dateshow:false,
       sou_value:"",
@@ -148,7 +181,7 @@ export default {
   margin-top: 100px;
   border-radius: 10px;
   background-color: white;
-  width: 90%;
+  width: 94%;
   height: 120px;
   position: relative;
 }
@@ -173,7 +206,7 @@ export default {
 .dingwei {
   width: 18px;
   position: relative;
-  top: 2px;
+  top: -2px;
   margin-right: 6px;
 }
 .jiaohuan {
@@ -181,7 +214,7 @@ export default {
   height: 40px;
   position: absolute;
   top: 43px;
-  left: 270px;
+  left: 284px;
   border: none;
   background-color: transparent;
   z-index: 999;
@@ -191,7 +224,7 @@ export default {
   margin-top: 6px;
   border-radius: 10px;
   background-color: white;
-  width: 90%;
+  width: 94%;
   height: 120px;
 }
 .date {
@@ -209,7 +242,7 @@ export default {
   margin-top: 10px;
   border-radius: 10px;
   background-color: white;
-  width: 90%;
+  width: 94%;
   height: 60px;
 }
 .location {
@@ -235,12 +268,54 @@ export default {
   margin-top: 10px;
   border-radius: 10px;
   background-color: #f5a333;
-  width: 90%;
+  width: 94%;
   height: 50px;
 }
 .search {
   margin-top: 20px;
   border-bottom:1px solid #eee;
+}
+.man{
+  padding: 0 20px;
+  margin-top:20px;
+}
+.man1{
+  padding: 0 20px;
+  margin-top:20px;
+}
+.dazi{
+  font-size: 16px;
+  color: #000;
+  font-weight:bold;
+}
+.xiaozi{
+  margin-top:2px;
+  color: #999;
+  font-size:14px;
+}
+.title{
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size:17px;
+  color:#000;
+  font-weight:bold;
+}
+.van-stepper{
+  margin-left: 20px;
+}
+.cang{
+  margin-bottom:120px;
+}
+.wancheng {
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #4396f6;
+  width: 90%;
+  height: 50px;
+  position:absolute;
+  bottom: 30px;
+  left:5%;
 }
 </style>
 <style >
@@ -251,4 +326,38 @@ export default {
 body {
   background: -webkit-linear-gradient(#4396f6, #4396f6);
 }
+.van-stepper__minus {
+     width:36px;
+     height: 36px;
+     color: #7ab1f8;
+    background-color: #f7f7ff;
+    border-radius:20px;
+}
+.van-stepper__input {
+    box-sizing: border-box;
+    width: 32px;
+    height: 28px;
+    margin: 0 16px;
+    padding: 0;
+    color: #2d2d2d;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    border: 0;
+    border-width: 1px 0;
+    -webkit-appearance: none;
+    font-weight:bold;
+}
+.van-stepper__plus {
+   color: #3f8ff2;
+    background-color: #e7f1fd;
+    border-radius:20px;
+    width:36px;
+    height: 36px;
+}
+.ant-slider-mark {
+    font-size: 8px;
+    white-space:nowrap;
+} 
 </style>

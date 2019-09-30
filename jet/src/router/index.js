@@ -10,6 +10,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {path:'/',component:home},
     {path:'/home',component:home},
     {path:'/folder',component:folder},
     {path:'/hotel',component:hotel},

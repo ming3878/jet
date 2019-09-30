@@ -8,11 +8,13 @@ import 'vant/lib/index.css';
 import Mint from 'mint-ui';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
-
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
 
 Vue.use(Vant);
 Vue.use(Mint);
 Vue.use(iView);
+Vue.use(Antd);
 
 Vue.config.productionTip = false
 
